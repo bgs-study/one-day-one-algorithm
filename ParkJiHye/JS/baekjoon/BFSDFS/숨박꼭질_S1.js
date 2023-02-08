@@ -8,18 +8,15 @@ function solution(n, k) {
     map[n] = 1;
     
     while (queue.length > 0) {
-        const len = queue.length;
-        for (let i = 0; i < len; i++) {
-            const [x, count] = queue.shift();
-            if ( x === k ) { console.log(count); break;}
-            for (let nx of [x - 1, x + 1, x * 2]) {
-                if (nx >= 0 && nx <= 100000 && map[nx] === 0) {
-                    map[nx] = 1;
-                    queue.push([nx, count + 1]);
-                }
+        const [x, count] = queue.shift();
+        if ( x === k ) { console.log(count); break;}
+        for (let nx of [x - 1, x + 1, x * 2]) {
+            if (nx >= 0 && nx <= 100000 && map[nx] === 0) {
+                map[nx] = 1;
+                queue.push([nx, count + 1]);
             }
         }
-    }
+    }   
 }
 
 solution(N, K);
